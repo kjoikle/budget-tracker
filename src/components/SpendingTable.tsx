@@ -2,16 +2,17 @@ import { IExpenditure } from "../Interfaces";
 import SpendingItem from "./SpendingItem";
 
 interface Props {
-  expendituresList: IExpenditure[];
+  expenditureList: IExpenditure[];
+  onDelete(idToDel: string): void;
 }
 
-function SpendingTable({ expendituresList }: Props) {
+function SpendingTable({ expenditureList, onDelete }: Props) {
   return (
     <div className="spendingTable">
       <h3>Expenditures</h3>
 
-      {expendituresList.map((item) => {
-        return <SpendingItem item={item} />;
+      {expenditureList.map((item) => {
+        return <SpendingItem key={item.id} item={item} onDelete={onDelete} />;
       })}
     </div>
   );
