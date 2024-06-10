@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { IExpenditure } from "../Interfaces";
 import { v4 as uuidv4 } from "uuid";
+import Dropdown from "./Dropdown";
 
 interface Props {
   addToList(item: IExpenditure): void;
@@ -44,12 +45,9 @@ function InputBar({ addToList }: Props) {
         value={expenditureName}
         onChange={handleChange}
       />
-      <input
-        name="category"
-        type="text"
-        placeholder="Category"
-        value={expenditureCategory}
-        onChange={handleChange}
+      <Dropdown
+        selectedCategory={expenditureCategory}
+        setSelectedCategory={setExpenditureCategory}
       />
       <input
         name="cost"
